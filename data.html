@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataTables with Google Sheets and XLSX Export</title>
+    <title>DataTables with Google Sheets</title>
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
@@ -14,12 +14,9 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-    <!-- SheetJS for XLSX Export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles/js/buttons.html5.styles.min.js"></script>
 </head>
 <body>
-    <h1>DataTables with Google Sheets and XLSX Export</h1>
+    <h1>DataTables with Google Sheets</h1>
     <table id="example" class="display nowrap" style="width:100%">
         <thead>
             <tr>
@@ -72,18 +69,7 @@
                     ],
                     dom: 'Bfrtip',
                     buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print',
-                        {
-                            extend: 'excelHtml5',
-                            text: 'Export XLSX',
-                            exportOptions: {
-                                columns: ':visible'
-                            },
-                            customize: function (xlsx) {
-                                var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                                $('row c[r]', sheet).attr('s', '42'); // Style cell (optional)
-                            }
-                        }
+                        'copy', 'csv', 'excel', 'pdf', 'print'
                     ]
                 });
             });
@@ -91,4 +77,3 @@
     </script>
 </body>
 </html>
-

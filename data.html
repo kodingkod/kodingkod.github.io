@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets + DataTables</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <!-- PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <h1>Google Sheets + DataTables Example</h1>
+    <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>NIA</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>AbsensiSahitak</th>
+                <th>KotakKe</th>
+                <th>Sahiman</th>
+                <th>KualitasHafalan</th>
+                <th>Penguji</th>
+                <th>Waktu</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            const sheetURL = 'https://docs.google.com/spreadsheets/d/1vkvdqoAOmbcqAk_nHjgumpBKS-3qSpTbf3B1JFHz8N0/gviz/tq?tqx=out:csv&sheet=Sheet1&tq=SELECT B,C,D,E,F,G,H,I,J,K,L WHERE K = date '2025-01-10' AND F = 'SUBUH''; // Replace with your Google Sheet CSV link
+
+            Papa.parse(sheetURL, {
+                download: true,
+                header: true,
+                complete: function (results) {
+                    $('#example').DataTable({
+                        data: results.data,
+                        columns: [
+                            { data: 'Timestamp' },
+                            { data: 'NIA' },
+                            { data: 'Nama' },
+                            { data: 'Kelas' },
+                            { data: 'AbsensiSahitak' },
+                            { data: 'KotakKe' },
+                            { data: 'Sahiman' },
+                            { data: 'KualitasHafalan' },
+                            { data: 'Penguji' },
+                            { data: 'Waktu' }
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

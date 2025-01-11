@@ -38,7 +38,7 @@
 
     <script>
         $(document).ready(function () {
-            const sheetURL = 'https://docs.google.com/spreadsheets/d/1vkvdqoAOmbcqAk_nHjgumpBKS-3qSpTbf3B1JFHz8N0/gviz/tq?tqx=out:csv&sheet=Sheet1&tq=SELECT B,C,D,E,F,G,H,I,J,K,L WHERE K = date '2025-01-10' AND F = 'SUBUH''; // Replace with your Google Sheet CSV link
+            const sheetURL = 'https://docs.google.com/spreadsheets/d/1vkvdqoAOmbcqAk_nHjgumpBKS-3qSpTbf3B1JFHz8N0/gviz/tq?tqx=out:csv&sheet=Sheet1&tq=SELECT%20B,C,D,E,F,G,H,I,J,K,L%20WHERE%20K%20=%20date%20%272025-01-10%27%20AND%20F%20=%20%27SUBUH%27'; // Replace with your Google Sheet CSV link
 
             Papa.parse(sheetURL, {
                 download: true,
